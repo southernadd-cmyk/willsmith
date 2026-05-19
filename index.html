@@ -1,328 +1,168 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will Smith Eating Spaghetti — AI Benchmark Evolution</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0f; color: #e0e0e0; line-height: 1.6;
-        }
-        .hero {
-            text-align: center; padding: 50px 20px 35px;
-            background: linear-gradient(180deg, #1a1a2e 0%, #0a0a0f 100%);
-            border-bottom: 1px solid #2a2a3e;
-        }
-        .hero h1 {
-            font-size: 2.4rem;
-            background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-            margin-bottom: 10px;
-        }
-        .hero p { color: #888; font-size: 1.05rem; max-width: 700px; margin: 0 auto; }
-
-        .timeline { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
-
-        .year-section {
-            margin-bottom: 50px; animation: fadeInUp 0.6s ease forwards; opacity: 0;
-        }
-        .year-section:nth-child(1) { animation-delay: 0.1s; }
-        .year-section:nth-child(2) { animation-delay: 0.2s; }
-        .year-section:nth-child(3) { animation-delay: 0.3s; }
-        .year-section:nth-child(4) { animation-delay: 0.4s; }
-        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-
-        .year-header {
-            display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
-            padding-bottom: 12px; border-bottom: 2px solid; flex-wrap: wrap;
-        }
-        .year-badge {
-            font-size: 1.8rem; font-weight: 800; padding: 4px 16px;
-            border-radius: 8px; background: #1e1e2e; border: 2px solid;
-        }
-        .model-tag {
-            font-size: 0.85rem; padding: 3px 10px; border-radius: 20px;
-            background: #2a2a3e; color: #aaa;
-        }
-
-        .content-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 25px; align-items: start;
-        }
-        @media (max-width: 800px) { .content-grid { grid-template-columns: 1fr; } }
-
-        .video-card {
-            background: #1a1a2e; border-radius: 12px; overflow: hidden;
-            border: 1px solid #2a2a3e;
-        }
-        .video-wrapper {
-            position: relative; width: 100%; background: #0a0a0f; min-height: 300px;
-        }
-        .video-wrapper iframe, .video-wrapper video {
-            width: 100%; display: block; border: none;
-        }
-        .video-wrapper iframe { aspect-ratio: 16/9; }
-        .video-wrapper video { max-height: 400px; }
-
-        .frame-info { padding: 18px; }
-        .frame-info h3 { color: #fff; margin-bottom: 8px; font-size: 1.1rem; }
-        .frame-info p { color: #888; font-size: 0.92rem; line-height: 1.5; margin-bottom: 10px; }
-
-        .metrics { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
-        .metric { display: flex; align-items: center; gap: 5px; font-size: 0.82rem; color: #aaa; }
-        .metric-bar { width: 55px; height: 5px; background: #2a2a3e; border-radius: 3px; overflow: hidden; }
-        .metric-fill { height: 100%; border-radius: 3px; }
-
-        .rating {
-            display: inline-flex; align-items: center; gap: 5px;
-            padding: 3px 10px; border-radius: 6px; font-size: 0.8rem;
-            font-weight: 600; margin-top: 10px;
-        }
-        .rating-terrible { background: #3a1a1a; color: #ff6b6b; }
-        .rating-poor { background: #3a2a1a; color: #feca57; }
-        .rating-good { background: #1a3a2a; color: #1dd1a1; }
-        .rating-excellent { background: #1a2a3a; color: #48dbfb; }
-
-        .desc-box {
-            background: #1a1a2e; border-radius: 12px; padding: 18px;
-            border: 1px solid #2a2a3e;
-        }
-        .desc-box h4 { color: #fff; margin-bottom: 10px; font-size: 1rem; }
-        .desc-box ul { list-style: none; padding: 0; }
-        .desc-box li {
-            padding: 5px 0; color: #aaa; font-size: 0.9rem;
-            display: flex; align-items: start; gap: 8px;
-        }
-        .desc-box li::before { content: '→'; color: #666; flex-shrink: 0; }
-
-        .source-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-        .source-link {
-            color: #48dbfb; text-decoration: none; font-size: 0.82rem;
-            padding: 2px 8px; background: #1a2a3a; border-radius: 4px;
-        }
-        .source-link:hover { background: #2a3a4a; }
-
-        .notice {
-            background: #1a1a2e; border: 1px solid #2a2a3e; border-radius: 8px;
-            padding: 14px 18px; margin-bottom: 25px; color: #888; font-size: 0.88rem;
-        }
-        .notice strong { color: #feca57; }
-
-        .footer {
-            text-align: center; padding: 35px 20px; color: #555; font-size: 0.85rem;
-            border-top: 1px solid #1a1a2e;
-        }
-        .footer a { color: #777; text-decoration: none; }
-        .footer a:hover { color: #aaa; }
-    </style>
-<base target="_blank">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Will Smith Eating Pasta AI Benchmark: 2023-2026</title>
+  <style>
+    :root{
+      --bg:#08090d;
+      --panel:#11131b;
+      --panel2:#171a24;
+      --text:#f4f1e8;
+      --muted:#b7b0a1;
+      --accent:#ffcf5a;
+      --line:rgba(255,255,255,.12);
+      --shadow:0 22px 70px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255,207,90,.18), transparent 32rem),
+        radial-gradient(circle at bottom right, rgba(255,90,90,.11), transparent 30rem),
+        var(--bg);
+      color:var(--text);
+    }
+    header{
+      padding:54px 24px 24px;
+      max-width:1180px;
+      margin:auto;
+    }
+    .eyebrow{
+      color:var(--accent);
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-size:.78rem;
+    }
+    h1{
+      margin:.55rem 0 1rem;
+      font-size:clamp(2rem, 5vw, 5rem);
+      line-height:.94;
+      max-width:980px;
+    }
+    .intro{
+      max-width:780px;
+      color:var(--muted);
+      font-size:1.08rem;
+      line-height:1.6;
+    }
+    main{
+      max-width:1180px;
+      margin:auto;
+      padding:20px 24px 60px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:22px;
+    }
+    .card{
+      background:linear-gradient(180deg, var(--panel), var(--panel2));
+      border:1px solid var(--line);
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+    .video{
+      aspect-ratio:16/9;
+      width:100%;
+      background:#000;
+      display:block;
+      border:0;
+    }
+    video.video{object-fit:cover}
+    .content{padding:22px}
+    .year{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:10px;
+    }
+    .year h2{
+      margin:0;
+      font-size:2.2rem;
+    }
+    .badge{
+      border:1px solid rgba(255,207,90,.45);
+      color:var(--accent);
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:.82rem;
+      font-weight:700;
+      white-space:nowrap;
+    }
+    p{color:var(--muted);line-height:1.55;margin:.7rem 0 0}
+    a{color:var(--accent);text-decoration:none;font-weight:700}
+    a:hover{text-decoration:underline}
+    .note{
+      margin-top:26px;
+      border:1px dashed rgba(255,255,255,.18);
+      border-radius:22px;
+      padding:18px 20px;
+      color:var(--muted);
+      background:rgba(255,255,255,.04);
+    }
+    @media (max-width:850px){
+      .grid{grid-template-columns:1fr}
+      header{padding-top:34px}
+    }
+  </style>
 </head>
 <body>
-    <div class="hero">
-        <h1>🍝 Will Smith Eating Spaghetti</h1>
-        <p>The unofficial benchmark for AI video generation — with actual videos side-by-side.</p>
-    </div>
+  <header>
+    <div class="eyebrow">AI video benchmark</div>
+    <h1>Will Smith Eating Pasta: 2023-2026</h1>
+    <p class="intro">A simple side-by-side viewing page for the informal “Will Smith eating spaghetti” benchmark. Each panel uses an external video source, so if an embed is blocked, use the source link underneath.</p>
+  </header>
 
-    <div class="timeline">
-        <div class="notice">
-            <strong>📺 Video Sources:</strong> 
-            2023 & 2025 clips are from Wikimedia Commons (public domain AI-generated works). 
-            2024 & 2026 clips are from YouTube. Click source links if embeds don't load.
+  <main>
+    <section class="grid" aria-label="Year by year video comparison">
+      <article class="card">
+        <video class="video" controls preload="metadata" poster="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Will_Smith_Eating_Spaghetti_Original.webm/640px--Will_Smith_Eating_Spaghetti_Original.webm.jpg">
+          <source src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Will_Smith_Eating_Spaghetti_Original.webm" type="video/webm" />
+        </video>
+        <div class="content">
+          <div class="year"><h2>2023</h2><span class="badge">ModelScope era</span></div>
+          <p>The original viral clip: warped face, broken eating motion, unstable hands, and surreal pasta physics.</p>
+          <p><a href="https://commons.wikimedia.org/wiki/File:Will_Smith_Eating_Spaghetti_Original.webm" target="_blank" rel="noopener">Open source video</a></p>
         </div>
+      </article>
 
-        <!-- 2023 -->
-        <div class="year-section">
-            <div class="year-header" style="border-color: #ff6b6b;">
-                <span class="year-badge" style="border-color: #ff6b6b; color: #ff6b6b;">2023</span>
-                <span class="model-tag">ModelScope Text-to-Video</span>
-                <span class="model-tag">March 23, 2023</span>
-            </div>
-            <div class="content-grid">
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/c/ca/Will_Smith_Eating_Spaghetti_Original.webm/Will_Smith_Eating_Spaghetti_Original.webm.240p.vp9.webm" type="video/webm">
-                            <source src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Will_Smith_Eating_Spaghetti_Original.webm" type="video/webm">
-                        </video>
-                    </div>
-                    <div class="frame-info">
-                        <h3>👹 The Original Nightmare</h3>
-                        <p>The video that started it all. Posted by Reddit user <em>chaindrop</em> on r/StableDiffusion. A distorted, surreal render with morphing facial features and unnatural eating motions.</p>
-                        <div class="metrics">
-                            <div class="metric"><span>Realism</span><div class="metric-bar"><div class="metric-fill" style="width: 5%; background: #ff6b6b;"></div></div></div>
-                            <div class="metric"><span>Coherence</span><div class="metric-bar"><div class="metric-fill" style="width: 10%; background: #ff6b6b;"></div></div></div>
-                            <div class="metric"><span>Audio</span><div class="metric-bar"><div class="metric-fill" style="width: 0%; background: #666;"></div></div></div>
-                        </div>
-                        <span class="rating rating-terrible">🔥 DEMONIC</span>
-                        <div class="source-row">
-                            <a class="source-link" href="https://commons.wikimedia.org/wiki/File:Will_Smith_Eating_Spaghetti_Original.webm" target="_blank">Wikimedia Commons</a>
-                            <a class="source-link" href="https://www.reddit.com/r/StableDiffusion/comments/11y2m2q/will_smith_eating_spaghetti/" target="_blank">Original Reddit</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="desc-box">
-                    <h4>📋 Benchmark Notes</h4>
-                    <ul>
-                        <li>First viral AI-generated video of a celebrity eating pasta</li>
-                        <li>Posted by Reddit user chaindrop on r/StableDiffusion</li>
-                        <li>Facial features morphed unpredictably between frames</li>
-                        <li>Spaghetti appeared to move independently</li>
-                        <li>No audio — silent, 20-second clip</li>
-                        <li>File is public domain (AI-generated, no human authorship)</li>
-                        <li>Established the benchmark: if AI can make Will Smith eat spaghetti convincingly, it's ready for prime time</li>
-                    </ul>
-                </div>
-            </div>
+      <article class="card">
+        <iframe class="video" src="https://www.youtube.com/embed/-3-nZEzuyUw" title="Will Smith eating spaghetti in 2024" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="content">
+          <div class="year"><h2>2024</h2><span class="badge">Early improvement</span></div>
+          <p>Still uncanny, but the scene is more legible and the prompt is becoming a recognisable benchmark.</p>
+          <p><a href="https://www.youtube.com/watch?v=-3-nZEzuyUw" target="_blank" rel="noopener">Open on YouTube</a></p>
         </div>
+      </article>
 
-        <!-- 2024 -->
-        <div class="year-section">
-            <div class="year-header" style="border-color: #feca57;">
-                <span class="year-badge" style="border-color: #feca57; color: #feca57;">2024</span>
-                <span class="model-tag">MiniMax</span>
-                <span class="model-tag">February 2024</span>
-            </div>
-            <div class="content-grid">
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/fF5RSmiXzIE?rel=0" 
-                            title="Will Smith Eating Spaghetti AI Film 2025"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="frame-info">
-                        <h3>🎭 The Meta Moment & MiniMax</h3>
-                        <p>Will Smith posted a self-parody on Instagram/TikTok. Meanwhile, MiniMax (Chinese AI) made a more accurate representation, though AI Smith's chewing was still off and noodles levitated at the end.</p>
-                        <div class="metrics">
-                            <div class="metric"><span>Realism</span><div class="metric-bar"><div class="metric-fill" style="width: 35%; background: #feca57;"></div></div></div>
-                            <div class="metric"><span>Coherence</span><div class="metric-bar"><div class="metric-fill" style="width: 40%; background: #feca57;"></div></div></div>
-                            <div class="metric"><span>Audio</span><div class="metric-bar"><div class="metric-fill" style="width: 0%; background: #666;"></div></div></div>
-                        </div>
-                        <span class="rating rating-poor">⚠️ IMPROVED — Still uncanny</span>
-                        <div class="source-row">
-                            <a class="source-link" href="https://www.youtube.com/watch?v=fF5RSmiXzIE" target="_blank">YouTube</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="desc-box">
-                    <h4>📋 Benchmark Notes</h4>
-                    <ul>
-                        <li>Will Smith posted parody: "This is getting out of hand!"</li>
-                        <li>MiniMax achieved better facial accuracy but chewing was unnatural</li>
-                        <li>AI video remained short, silent, and often uncanny</li>
-                        <li>The benchmark solidified in AI community culture</li>
-                        <li>Still far from passing the "spaghetti test" convincingly</li>
-                    </ul>
-                </div>
-            </div>
+      <article class="card">
+        <iframe class="video" src="https://www.youtube.com/embed/Xgux5Wm4Ad0" title="Google Veo 3 Will Smith spaghetti test" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="content">
+          <div class="year"><h2>2025</h2><span class="badge">Veo 3 wave</span></div>
+          <p>Newer models produce more stable identity, lighting and motion, though details can still feel odd.</p>
+          <p><a href="https://www.youtube.com/watch?v=Xgux5Wm4Ad0" target="_blank" rel="noopener">Open on YouTube</a></p>
         </div>
+      </article>
 
-        <!-- 2025 -->
-        <div class="year-section">
-            <div class="year-header" style="border-color: #48dbfb;">
-                <span class="year-badge" style="border-color: #48dbfb; color: #48dbfb;">2025</span>
-                <span class="model-tag">Google Veo 3</span>
-                <span class="model-tag">May 2025</span>
-            </div>
-            <div class="content-grid">
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/7/7a/Will_Smith_eating_spaghetti_Google_Veo_3.webm/Will_Smith_eating_spaghetti_Google_Veo_3.webm.720p.vp9.webm" type="video/webm">
-                            <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/7/7a/Will_Smith_eating_spaghetti_Google_Veo_3.webm/Will_Smith_eating_spaghetti_Google_Veo_3.webm.480p.vp9.webm" type="video/webm">
-                            <source src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Will_Smith_eating_spaghetti_Google_Veo_3.webm" type="video/webm">
-                        </video>
-                    </div>
-                    <div class="frame-info">
-                        <h3>🎬 The Crunchy Breakthrough</h3>
-                        <p>Major leap with synchronized audio. Facial accuracy improved, but the AI added bizarre crunchy sound effects to spaghetti chewing. Tested by developer Javi Lopez.</p>
-                        <div class="metrics">
-                            <div class="metric"><span>Realism</span><div class="metric-bar"><div class="metric-fill" style="width: 75%; background: #48dbfb;"></div></div></div>
-                            <div class="metric"><span>Coherence</span><div class="metric-bar"><div class="metric-fill" style="width: 80%; background: #48dbfb;"></div></div></div>
-                            <div class="metric"><span>Audio</span><div class="metric-bar"><div class="metric-fill" style="width: 60%; background: #feca57;"></div></div></div>
-                        </div>
-                        <span class="rating rating-good">🍝 ALMOST — Crunchy audio</span>
-                        <div class="source-row">
-                            <a class="source-link" href="https://commons.wikimedia.org/wiki/File:Will_Smith_eating_spaghetti_Google_Veo_3.webm" target="_blank">Wikimedia Commons</a>
-                            <a class="source-link" href="https://arstechnica.com/ai/2025/05/googles-will-smith-double-is-better-at-eating-ai-spaghetti-but-its-crunchy/" target="_blank">Ars Technica</a>
-                            <a class="source-link" href="https://www.forbes.com/sites/danidiplacido/2025/05/22/google-passed-the-will-smith-eating-spaghetti-test/" target="_blank">Forbes</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="desc-box">
-                    <h4>📋 Benchmark Notes</h4>
-                    <ul>
-                        <li>First major model with synchronized audio generation</li>
-                        <li>Veo 3 produced 8-second HD clips with sound</li>
-                        <li>Tested by developer Javi Lopez on X (Twitter)</li>
-                        <li>Crunchy sound effects — AI confused spaghetti with crunchy food</li>
-                        <li>MKBHD: "I don't feel so good" about the squelching sounds</li>
-                        <li>Locked behind Google's $249.99/month AI Ultra plan</li>
-                    </ul>
-                </div>
-            </div>
+      <article class="card">
+        <iframe class="video" src="https://www.youtube.com/embed/eAQ8eV0dtl8" title="Kling 3.0 Will Smith eating spaghetti 2026" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="content">
+          <div class="year"><h2>2026</h2><span class="badge">Kling / Seedance era</span></div>
+          <p>Recent examples show much stronger scene continuity, face stability and believable eating movement.</p>
+          <p><a href="https://www.youtube.com/shorts/eAQ8eV0dtl8" target="_blank" rel="noopener">Open on YouTube Shorts</a></p>
         </div>
+      </article>
+    </section>
 
-        <!-- 2026 -->
-        <div class="year-section">
-            <div class="year-header" style="border-color: #ff9ff3;">
-                <span class="year-badge" style="border-color: #ff9ff3; color: #ff9ff3;">2026</span>
-                <span class="model-tag">ByteDance Seedance 2.0</span>
-                <span class="model-tag">Test: PASSED</span>
-                <span class="model-tag">February 2026</span>
-            </div>
-            <div class="content-grid">
-                <div class="video-card">
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/Em7BpjHcsOo?rel=0" 
-                            title="This AI Just Passed the Will Smith Spaghetti Test"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <div class="frame-info">
-                        <h3>🎖️ The Benchmark Is Passed</h3>
-                        <p>Forbes reports the test has been passed. Footage is "pretty much flawless" — convincing kitchen background, realistic outlets, no obvious hallucinations. Users moved on to Smith battling spaghetti monsters.</p>
-                        <div class="metrics">
-                            <div class="metric"><span>Realism</span><div class="metric-bar"><div class="metric-fill" style="width: 92%; background: #ff9ff3;"></div></div></div>
-                            <div class="metric"><span>Coherence</span><div class="metric-bar"><div class="metric-fill" style="width: 95%; background: #ff9ff3;"></div></div></div>
-                            <div class="metric"><span>Audio</span><div class="metric-bar"><div class="metric-fill" style="width: 88%; background: #ff9ff3;"></div></div></div>
-                        </div>
-                        <span class="rating rating-excellent">🏆 PASSED</span>
-                        <div class="source-row">
-                            <a class="source-link" href="https://www.youtube.com/watch?v=Em7BpjHcsOo" target="_blank">YouTube</a>
-                            <a class="source-link" href="https://www.forbes.com/sites/danidiplacido/2026/02/11/ai-can-flawlessly-generate-will-smith-eating-spaghetti-what-now/" target="_blank">Forbes</a>
-                            <a class="source-link" href="https://www.reddit.com/r/singularity/comments/1r1auy1/will_smith_eating_spaghetti_by_seedance_20_is/" target="_blank">Reddit</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="desc-box">
-                    <h4>📋 Benchmark Notes</h4>
-                    <ul>
-                        <li>Seedance 2.0 from ByteDance declared the test passed</li>
-                        <li>Can mimic specific shots and camera movements from references</li>
-                        <li>Users began testing limits: Will Smith vs. Spaghetti Monsters</li>
-                        <li>Fight scenes surprisingly coherent with physical reactions</li>
-                        <li>Still feels slightly "off" but considerably less uncanny</li>
-                        <li>Hallucinations exist but are difficult to spot</li>
-                        <li>MPA accused ByteDance of copyright infringement</li>
-                        <li>Raises question: What is the next benchmark?</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer">
-        <p>Videos from Wikimedia Commons (public domain AI works) and YouTube. Used for commentary/educational purposes.</p>
-        <p style="margin-top:6px;">Benchmark originated March 23, 2023 · Status: <strong style="color:#ff9ff3;">PASSED (2026)</strong></p>
-        <p style="margin-top:6px;">
-            <a href="https://en.wikipedia.org/wiki/Will_Smith_Eating_Spaghetti_test" target="_blank">Wikipedia</a> · 
-            <a href="https://www.businessinsider.com/will-smith-spaghetti-test-ai-video-progress-2025-12" target="_blank">Business Insider</a> · 
-            <a href="https://arstechnica.com/ai/2025/05/googles-will-smith-double-is-better-at-eating-ai-spaghetti-but-its-crunchy/" target="_blank">Ars Technica</a>
-        </p>
-    </div>
+    <aside class="note">
+      <strong>Note:</strong> this page embeds third-party videos rather than downloading or rehosting them. If a creator disables embedding, the panel may show an error but the source link should still work. Replace the YouTube IDs in the HTML if you find better clips.
+    </aside>
+  </main>
 </body>
 </html>
